@@ -146,7 +146,7 @@ class DemoTree extends PureComponent {
                     
                     <Div>
                         <button onClick={this.handleAddItem}>Add Node</button>
-                </Div>
+                    </Div>
                 </Div>
 
 

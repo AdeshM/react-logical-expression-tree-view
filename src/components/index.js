@@ -25,24 +25,24 @@ const TreeBeard = ({
         // <Ul style={{...defaultTheme.tree.base, ...style.tree.base}}>
         <Grid container spacing={3} /* className={`${classes.nodeC} ${classes.operator}`} */ >
             {castArray(data).map((node, index) => (
-            <TreeNode
-                decorators={decorators}
-                node={node}
-                onToggle={onToggle}
-                animations={animations}
-                onSelect={onSelect}
-                customStyles={customStyles}
-                key={node.id || randomString()}
-                style={{...defaultTheme.tree.node, ...style.tree.node}}
+                <TreeNode
+                    decorators={decorators}
+                    node={node}
+                    onToggle={onToggle}
+                    animations={animations}
+                    onSelect={onSelect}
+                    customStyles={customStyles}
+                    key={node.id || randomString()}
+                    style={{...defaultTheme.tree.node, ...style.tree.node}}
                     actionHandler={actionHandler}
                     treeIndex={index}
                     path={path}
                     // onChange={onChange}
-            />
-        ))}
+                />
+            ))}
         </Grid>
         // </Ul> */
-);
+    );
 };
 
 TreeBeard.propTypes = {

@@ -109,20 +109,20 @@ class TreeNode extends PureComponent {
                     className={`${classes.nodeC} `} >
                     {/* ${this.createOperatorContentClass(node.operator)}`} > */}
                     {children.map((child, childIndex) => { /* console.log(child); */ return (
-                    <TreeNode
-                        onSelect={onSelect}
-                        onToggle={onToggle}
-                        animations={animations}
-                        style={style}
-                        customStyles={customStyles}
-                        decorators={propDecorators}
-                        key={child.id || randomString()}
-                        node={child}
+                        <TreeNode
+                            onSelect={onSelect}
+                            onToggle={onToggle}
+                            animations={animations}
+                            style={style}
+                            customStyles={customStyles}
+                            decorators={propDecorators}
+                            key={child.id || randomString()}
+                            node={child}
                             classes={classes}
                             actionHandler={actionHandler}
                             treeIndex={childIndex}
                             path={path}
-                    />
+                        />
                     );})}
                 </Grid>
                 {/* </> */}
