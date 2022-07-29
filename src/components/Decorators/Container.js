@@ -18,19 +18,29 @@ class Container extends PureComponent {
     }
 
     renderToggleDecorator() {
-        const {style, decorators, onClick} = this.props;
-        return <decorators.Toggle style={style.toggle} onClick={onClick}/>;
+        const {style, decorators, onClick, node} = this.props;
+        return <decorators.Toggle style={style.toggle} onClick={onClick} node={node} />;
     }
 
     render() {
         const {
-            style, decorators, terminal, node, onSelect, customStyles
+            style, decorators, terminal, node, onSelect, customStyles, actionHandler, treeIndex, path
         } = this.props;
         return (
-            <div style={node.active ? {...style.container} : {...style.link}}>
+            // <div style={node.active ? {...style.container} : {...style.link}}>
+            <>
                 {!terminal ? this.renderToggle() : null}
-                <decorators.Header node={node} style={style.header} customStyles={customStyles} onSelect={onSelect}/>
-            </div>
+                <decorators.Header
+                    node={node}
+                    style={style.header}
+                    customStyles={customStyles}
+                    onSelect={onSelect}
+                    actionHandler={actionHandler}
+                    treeIndex={treeIndex}
+                    path={path}
+                />
+            </>
+            // </div>
         );
     }
 }
@@ -46,7 +56,10 @@ Container.propTypes = {
         PropTypes.object,
         PropTypes.bool
     ]).isRequired,
-    node: PropTypes.object.isRequired
+    node: PropTypes.object.isRequired,
+    actionHandler: PropTypes.func,
+    treeIndex: PropTypes.number,
+    path: PropTypes.array,
 };
 
 Container.defaultProps = {

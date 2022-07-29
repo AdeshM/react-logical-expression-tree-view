@@ -5,14 +5,20 @@ import {isArray, isFunction} from 'lodash';
 
 import defaultAnimations from '../../themes/animations';
 import {randomString} from '../../util';
-import {Ul} from '../common';
+import {Ul, Li} from '../common';
 import NodeHeader from '../NodeHeader';
 import Drawer from './Drawer';
 import Loading from './Loading';
 
-const Li = styled('li', {
-    shouldForwardProp: prop => ['className', 'children', 'ref'].indexOf(prop) !== -1
-})(({style}) => style);
+import { Container, Grid, Paper, Box, IconButton } from '@material-ui/core';
+
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import styles from '../../themes/styles2';
+
+
+// const Li = styled('li', {
+//     shouldForwardProp: prop => ['className', 'children', 'ref'].indexOf(prop) !== -1
+// })(({style}) => style);
 
 class TreeNode extends PureComponent {
     onClick() {
@@ -43,10 +49,33 @@ class TreeNode extends PureComponent {
         return Object.assign({}, decorators, nodeDecorators);
     }
 
-    renderChildren(decorators) {
+    // operator content - via styles
+    createOperatorContentClass(operator) {
+        const classes2 = makeStyles({
+            operator: {
+                '&::before': {
+                    content: `"${operator}"`,
+                }
+            }
+        })();
+        return classes2.operator;
+    }
+
+    createPath() {
+        const {path, treeIndex} = this.props;
+        // console.log(treeIndex, path);
+        return [...path, treeIndex];
+    }
+
+    renderChildren(decorators, path) {
         const {
-            animations, decorators: propDecorators, node, style, onToggle, onSelect, customStyles
+            animations, decorators: propDecorators,
+            node, style, onToggle, onSelect, customStyles, actionHandler,
+            treeIndex: childIndex, //path: path,
         } = this.props;
+
+        // console.log(this.props.path, path);
+
 
         if (node.loading) {
             return (
@@ -59,9 +88,27 @@ class TreeNode extends PureComponent {
             children = children ? [children] : [];
         }
 
+        // const useStyles = makeStyles((theme) => styles(theme));
+        // const classes = useStyles();
+        // operator content - via styles
+        /* const classes2 = makeStyles({
+            operator: {        
+                '&::before': {
+                    content: `"${node.operator}"`,
+                }
+            }
+        })(); */
+
+        const { classes } = this.props;
+
         return (
-            <Ul style={style.subtree}>
-                {children.map(child => (
+            // <>
+            <Grid item xs={12} className={classes.nodeL} /* onClick={onSelect} */ >
+                {/* <> */}
+                <Grid container spacing={3}
+                    className={`${classes.nodeC} `} >
+                    {/* ${this.createOperatorContentClass(node.operator)}`} > */}
+                    {children.map((child, childIndex) => { /* console.log(child); */ return (
                     <TreeNode
                         onSelect={onSelect}
                         onToggle={onToggle}
@@ -71,21 +118,31 @@ class TreeNode extends PureComponent {
                         decorators={propDecorators}
                         key={child.id || randomString()}
                         node={child}
+                            classes={classes}
+                            actionHandler={actionHandler}
+                            treeIndex={childIndex}
+                            path={path}
                     />
-                ))}
-            </Ul>
+                    );})}
+                </Grid>
+                {/* </> */}
+            </Grid>
+            // </>
         );
     }
 
     render() {
         const {
-            node, style, onSelect, customStyles
+            node, style, onSelect, customStyles, actionHandler, treeIndex
         } = this.props;
         const decorators = this.decorators();
         const animations = this.animations();
+        const path = this.createPath();
         const {...restAnimationInfo} = animations.drawer;
+
+        const { classes } = this.props;
         return (
-            <Li style={style.base}>
+            <>
                 <NodeHeader
                     decorators={decorators}
                     animations={animations}
@@ -94,11 +151,17 @@ class TreeNode extends PureComponent {
                     customStyles={customStyles}
                     onClick={() => this.onClick()}
                     onSelect={isFunction(onSelect) ? (() => onSelect(node)) : undefined}
+                    classes={classes}
+                    actionHandler={ isFunction(actionHandler)
+                        ? ((e) => actionHandler(e, node, treeIndex, path))
+                        : undefined }
+                    treeIndex={treeIndex}
+                    path={path}
                 />
                 <Drawer restAnimationInfo={{...restAnimationInfo}}>
-                    {node.toggled ? this.renderChildren(decorators, animations) : null}
+                    {node.toggled ? this.renderChildren(decorators, path, node, animations) : null}
                 </Drawer>
-            </Li>
+            </>
         );
     }
 }
@@ -113,11 +176,16 @@ TreeNode.propTypes = {
     animations: PropTypes.oneOfType([
         PropTypes.object,
         PropTypes.bool
-    ]).isRequired
+    ]).isRequired,
+    classes: PropTypes.object,
+    actionHandler: PropTypes.func,
+    treeIndex: PropTypes.number,
+    path: PropTypes.array,
 };
 
 TreeNode.defaultProps = {
     customStyles: {}
 };
 
-export default TreeNode;
+// export default TreeNode;
+export default withStyles(styles)(TreeNode);

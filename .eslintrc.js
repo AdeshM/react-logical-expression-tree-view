@@ -54,6 +54,7 @@ module.exports = {
             4
         ],
         'react/jsx-uses-react': 'error',
-        'react/jsx-uses-vars': 'error'
+        'react/jsx-uses-vars': 'error',
+        'no-unused-vars': 'warn',
     }
 };

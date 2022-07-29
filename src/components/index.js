@@ -9,11 +9,22 @@ import {Ul} from './common';
 import defaultDecorators from './Decorators';
 import TreeNode from './TreeNode';
 
+import { Container, Grid, Paper, Box, IconButton } from '@material-ui/core';
+
+import { makeStyles, withStyles } from '@material-ui/core/styles';
+import styles from '../themes/styles2';
+
+
 const TreeBeard = ({
-    animations, decorators, data, onToggle, style, onSelect, customStyles
-}) => (
-    <Ul style={{...defaultTheme.tree.base, ...style.tree.base}}>
-        {castArray(data).map(node => (
+    animations, decorators, data, onToggle, style, onSelect, customStyles, actionHandler, /* onChange */
+}) => {
+    const useStyles = makeStyles((theme) => styles(theme));
+    const classes = useStyles();
+    const path = [];
+    return (
+        // <Ul style={{...defaultTheme.tree.base, ...style.tree.base}}>
+        <Grid container spacing={3} /* className={`${classes.nodeC} ${classes.operator}`} */ >
+            {castArray(data).map((node, index) => (
             <TreeNode
                 decorators={decorators}
                 node={node}
@@ -23,10 +34,16 @@ const TreeBeard = ({
                 customStyles={customStyles}
                 key={node.id || randomString()}
                 style={{...defaultTheme.tree.node, ...style.tree.node}}
+                    actionHandler={actionHandler}
+                    treeIndex={index}
+                    path={path}
+                    // onChange={onChange}
             />
         ))}
-    </Ul>
+        </Grid>
+        // </Ul> */
 );
+};
 
 TreeBeard.propTypes = {
     style: PropTypes.object,
@@ -41,7 +58,9 @@ TreeBeard.propTypes = {
     ]),
     onToggle: PropTypes.func,
     onSelect: PropTypes.func,
-    decorators: PropTypes.object
+    decorators: PropTypes.object,
+    actionHandler: PropTypes.func,
+    // onChange: PropTypes.func,
 };
 
 TreeBeard.defaultProps = {

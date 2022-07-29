@@ -1,6 +1,6 @@
 export default {
     toggle: ({node: {toggled}}, duration = 300) => ({
-        animation: {rotateZ: toggled ? 90 : 0},
+        animation: {rotateZ: toggled ? 0 : 0},
         duration: duration
     }),
     drawer: (/* props */) => ({

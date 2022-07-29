@@ -25,7 +25,7 @@ class NodeHeader extends Component {
 
     render() {
         const {
-            animations, decorators, node, onClick, style, onSelect, customStyles
+            animations, decorators, node, onClick, style, onSelect, customStyles, actionHandler, treeIndex
         } = this.props;
         const {active, children} = node;
         const terminal = !children;
@@ -45,6 +45,8 @@ class NodeHeader extends Component {
                 onSelect={onSelect}
                 terminal={terminal}
                 style={styles}
+                actionHandler={actionHandler}
+                treeIndex={treeIndex}
             />
         );
     }
@@ -60,7 +62,9 @@ NodeHeader.propTypes = {
     ]).isRequired,
     node: PropTypes.object.isRequired,
     onClick: PropTypes.func,
-    onSelect: PropTypes.func
+    onSelect: PropTypes.func,
+    actionHandler: PropTypes.func,
+    treeIndex: PropTypes.number
 };
 
 NodeHeader.defaultProps = {
