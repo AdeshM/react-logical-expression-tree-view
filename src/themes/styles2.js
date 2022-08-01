@@ -18,7 +18,7 @@ const styles = (theme) => ({
         paddingLeft: '3rem',
 
         '&:before': {
-            content: '" AND "',
+            // content: '" AND "',
             border: `1px solid ${lineColor}`,
             padding: '0.1rem 0.5rem',
             borderRadius: '1rem',
@@ -50,7 +50,7 @@ const styles = (theme) => ({
         '&:first-child::before': {
             height: '50%',
             top: '50%',
-            content: '" "',
+            // content: '" "',
         },
         
         // '&>div:nth-child(1)::before': {
@@ -80,6 +80,18 @@ const styles = (theme) => ({
 
     },
 
+    operator: {
+        // transform: 'rotateZ(0deg)',
+        top: '49%',
+        position: 'absolute',
+        zIndex: 111,
+        border: '1px solid #FFF',
+        padding: '0.1rem 0.5rem',
+        borderRadius: '1rem',
+        background: '#666',
+        left: '0%',
+        cursor: 'pointer',
+    },
 
     paper: {
         padding: theme.spacing(2),

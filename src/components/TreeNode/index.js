@@ -72,6 +72,7 @@ class TreeNode extends PureComponent {
             animations, decorators: propDecorators,
             node, style, onToggle, onSelect, customStyles, actionHandler,
             treeIndex: childIndex, //path: path,
+            onSelectConnector,
         } = this.props;
 
         // console.log(this.props.path, path);
@@ -105,8 +106,18 @@ class TreeNode extends PureComponent {
             // <>
             <Grid item xs={12} className={classes.nodeL} /* onClick={onSelect} */ >
                 {/* <> */}
+                <div className={classes.operator} /* onClick={onSelectConnector} */
+                    onClick={ (e) => {
+                        // console.log('Hello Bamiyooo!', e, children, path);
+                        return (typeof onSelectConnector === 'function')
+                            ? onSelectConnector(children, path)
+                            : undefined;
+                    } }
+                >
+                    {node.operator}
+                </div>
                 <Grid container spacing={3}
-                    className={`${classes.nodeC} `} >
+                    className={`${classes.nodeC} `}>
                     {/* ${this.createOperatorContentClass(node.operator)}`} > */}
                     {children.map((child, childIndex) => { /* console.log(child); */ return (
                         <TreeNode
@@ -122,6 +133,7 @@ class TreeNode extends PureComponent {
                             actionHandler={actionHandler}
                             treeIndex={childIndex}
                             path={path}
+                            onSelectConnector={onSelectConnector}
                         />
                     );})}
                 </Grid>
@@ -133,7 +145,7 @@ class TreeNode extends PureComponent {
 
     render() {
         const {
-            node, style, onSelect, customStyles, actionHandler, treeIndex
+            node, style, onSelect, customStyles, actionHandler, treeIndex, onSelectConnector
         } = this.props;
         const decorators = this.decorators();
         const animations = this.animations();
@@ -157,9 +169,13 @@ class TreeNode extends PureComponent {
                         : undefined }
                     treeIndex={treeIndex}
                     path={path}
+                    onSelectConnector={isFunction(onSelectConnector)
+                        ? (() => onSelectConnector(node, path))
+                        : undefined
+                    }
                 />
                 <Drawer restAnimationInfo={{...restAnimationInfo}}>
-                    {node.toggled ? this.renderChildren(decorators, path, node, animations) : null}
+                    {node.toggled ? this.renderChildren(decorators, path, node, onSelectConnector, animations) : null}
                 </Drawer>
             </>
         );
@@ -181,6 +197,7 @@ TreeNode.propTypes = {
     actionHandler: PropTypes.func,
     treeIndex: PropTypes.number,
     path: PropTypes.array,
+    onSelectConnector: PropTypes.func
 };
 
 TreeNode.defaultProps = {

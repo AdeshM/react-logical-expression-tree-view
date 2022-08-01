@@ -16,7 +16,8 @@ import styles from '../themes/styles2';
 
 
 const TreeBeard = ({
-    animations, decorators, data, onToggle, style, onSelect, customStyles, actionHandler, /* onChange */
+    animations, decorators, data, onToggle, style, onSelect, customStyles, actionHandler,
+    onSelectConnector, /* onChange */
 }) => {
     const useStyles = makeStyles((theme) => styles(theme));
     const classes = useStyles();
@@ -37,6 +38,7 @@ const TreeBeard = ({
                     actionHandler={actionHandler}
                     treeIndex={index}
                     path={path}
+                    onSelectConnector={onSelectConnector}
                     // onChange={onChange}
                 />
             ))}
@@ -60,6 +62,7 @@ TreeBeard.propTypes = {
     onSelect: PropTypes.func,
     decorators: PropTypes.object,
     actionHandler: PropTypes.func,
+    onSelectConnector: PropTypes.func,
     // onChange: PropTypes.func,
 };
 

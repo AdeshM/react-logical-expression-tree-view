@@ -24,7 +24,8 @@ class Container extends PureComponent {
 
     render() {
         const {
-            style, decorators, terminal, node, onSelect, customStyles, actionHandler, treeIndex, path
+            style, decorators, terminal, node, onSelect, customStyles, actionHandler,
+            treeIndex, path, onSelectConnector
         } = this.props;
         return (
             // <div style={node.active ? {...style.container} : {...style.link}}>
@@ -38,6 +39,7 @@ class Container extends PureComponent {
                     actionHandler={actionHandler}
                     treeIndex={treeIndex}
                     path={path}
+                    onSelectConnector={onSelectConnector}
                 />
             </>
             // </div>
@@ -60,6 +62,7 @@ Container.propTypes = {
     actionHandler: PropTypes.func,
     treeIndex: PropTypes.number,
     path: PropTypes.array,
+    onSelectConnector: PropTypes.func,
 };
 
 Container.defaultProps = {

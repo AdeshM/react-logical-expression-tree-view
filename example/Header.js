@@ -13,7 +13,7 @@ import { propTypes } from 'velocity-react/velocity-component';
 
 
 // Example: Customising The Header Decorator To Include Icons
-const Header = ({onSelect, style, customStyles, node, actionHandler, treeIndex, path}) => {
+const Header = ({onSelect, style, customStyles, node, actionHandler, treeIndex, path, onSelectConnector}) => {
     // const iconType = node.children ? 'folder' : 'file-text';
     // const iconClass = `fa fa-${iconType}`;
     // const iconStyle = {marginRight: '5px'};
@@ -32,7 +32,9 @@ const Header = ({onSelect, style, customStyles, node, actionHandler, treeIndex, 
                 //<div></div>
                 //} */}
                 {/* { !node.children && */}
-                <LeafLevel {...{groupType: 'Test', groupName: node.name, actionHandler, treeIndex, path}} />
+                <LeafLevel {...{groupType: 'Test', groupName: node.name, actionHandler, treeIndex, path,
+                    onSelectConnector}
+                }/>
                 {/* } */}
                 {/* </Div> */}
             </Grid>
@@ -50,6 +52,7 @@ Header.propTypes = {
     actionHandler: PropTypes.func,
     treeIndex: PropTypes.number,
     path: PropTypes.array,
+    onSelectConnector: PropTypes.func,
 };
 
 Header.defaultProps = {
