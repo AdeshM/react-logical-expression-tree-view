@@ -1,6 +1,6 @@
 {
-  "name": "react-expression-tree",
-  "version": "4.0.0",
+  "name": "react-logical-expression-tree",
+  "version": "1.1.1-alpha",
   "description": "React Expression Tree View Component",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/storybookjs/react-treebeard.git"
+    "url": "git+https://github.com/AdeshM/react-treebeard.git"
   },
   "keywords": [
     "react",
@@ -36,7 +36,7 @@
   "bugs": {
     "url": "https://github.com/storybookjs/react-treebeard/issues"
   },
-  "homepage": "https://github.com/storybooks/react-treebeard#readme",
+  "homepage": "https://github.com/AdeshM/react-treebeard#readme",
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",

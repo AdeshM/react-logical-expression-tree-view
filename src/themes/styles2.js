@@ -84,13 +84,20 @@ const styles = (theme) => ({
         // transform: 'rotateZ(0deg)',
         top: '49%',
         position: 'absolute',
-        zIndex: 111,
-        border: '1px solid #FFF',
+        zIndex: 3,
+        border: '1px solid #CCC',
         padding: '0.1rem 0.5rem',
         borderRadius: '1rem',
-        background: '#666',
+        background: '#F2F6F8',
+        color: '#666666',
         left: '0%',
         cursor: 'pointer',
+
+        '&:active': {
+            border: '1px solid #CCC',
+            background: '#0787AC',
+            color: '#EEEEEE',
+        }
     },
 
     paper: {

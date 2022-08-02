@@ -1,6 +1,6 @@
 import React, {Fragment, PureComponent} from 'react';
 import ReactDOM from 'react-dom';
-import {forEach, includes} from 'lodash';
+import {forEach, includes, map} from 'lodash';
 
 import {Treebeard, decorators} from '../src';
 import {Div} from '../src/components/common';
@@ -12,6 +12,8 @@ import NodeViewer from './NodeViewer';
 
 import { getDepth, removeNode, randomString } from '../src/util/index';
 
+import { walk, map as maptree } from '../src/util/tree-data-utils';
+
 class DemoTree extends PureComponent {
     constructor(props) {
         super(props);
@@ -20,6 +22,7 @@ class DemoTree extends PureComponent {
         this.onSelect = this.onSelect.bind(this);
         this.handleRemoveItem = this.handleRemoveItem.bind(this);
         this.handleAddItem = this.handleAddItem.bind(this);
+        this.onSelectConnector = this.onSelectConnector.bind(this);
     }
 
     onToggle(node, toggled) {
@@ -101,12 +104,44 @@ class DemoTree extends PureComponent {
         console.log('Called handleAddItem => ', arguments, node);
         const { data } = this.state;
         const { children } = data;
-        children.splice(0, 0, {name: 'My New Item - ' + randomString(), id: randomString()});
-        this.setState(()=>({...data, children}));
+        // children.splice(0, 0, {name: 'My New Item - ' + randomString(), id: randomString()});
+        // this.setState(()=>({...data, children}));
+        /* this.setState((prevState)=> (
+            {...data, children}
+        )); */
+        /* this.setState((prevState, props) => {
+            prevState.data.children.splice(0, 0, {name: 'My New Item - ' + randomString(), id: randomString()});
+            prevState.data.children;
+        }); */
+        this.setState(function(previousState, currentProps) {
+            previousState.data.children.splice(0, 0, {name: 'My New Item - ' + randomString(), id: randomString()});
+            return {
+                ...previousState,
+                // data: previousState.data
+            };
+        });
     }
+
+    onSelectConnector(node, path) {
+        console.log('Called onSelectCondition => ', node, path);
+    }
+
 
     render() {
         const {data, cursor} = this.state;
+
+        const treeData = [data];
+        const getNodeKey = ({ treeIndex }) => treeIndex;
+        let collector = {};
+        const callback = (k) => {
+            console.log('Iam Callback => ', k);
+            const { name, id } = k.node;
+            // collector = k.
+        };
+        // const myTreeData = walk({treeData, getNodeKey, callback, ignoreCollapsed: false});
+        // console.log('Hello from RENDER 1', myTreeData);
+        
+
         return (
             <Fragment>
                 <Div style={styles.searchBox}>
@@ -137,6 +172,7 @@ class DemoTree extends PureComponent {
                             }
                         }}
                         actionHandler={this.handleRemoveItem}
+                        onSelectConnector={this.onSelectConnector}
                         onChange={(data) => {
                             this.setState(() => ({...data}));
                         }}
