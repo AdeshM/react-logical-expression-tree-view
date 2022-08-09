@@ -5,7 +5,7 @@
     border: '1px solid black'
 } */
 
-const txColor = '#0787AC';
+const txColor = '#2596B7';
 const lineColor = '#A4AFB7DE';
 const lineSize = 5;
 
@@ -35,6 +35,8 @@ const styles = (theme) => ({
 
     nodeL: {
         position: 'relative',
+        paddingTop: `${theme.spacing(1)}px !important`,
+        paddingBottom: `${theme.spacing(1)}px !important`,
 
         '&::before': {
             borderLeft: `1px solid ${lineColor}`,
@@ -82,7 +84,8 @@ const styles = (theme) => ({
 
     operator: {
         // transform: 'rotateZ(0deg)',
-        top: '49%',
+        // top: '49%',
+        top: `calc(49% + ${-5}px)`,
         position: 'absolute',
         zIndex: 3,
         border: '1px solid #CCC',
@@ -92,6 +95,11 @@ const styles = (theme) => ({
         color: '#666666',
         left: '0%',
         cursor: 'pointer',
+        userSelect: 'none',
+
+        fontSize: '.8rem',
+        width: '45px',
+        textAlign: 'center',
 
         '&:active': {
             border: '1px solid #CCC',
