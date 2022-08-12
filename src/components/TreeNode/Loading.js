@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import {Ul} from '../common';
 
 const Loading = ({style, decorators}) => (
-    <Ul style={style.subtree}>
-        <li>
-            <decorators.Loading style={style.loading}/>
-        </li>
-    </Ul>
+    // {/* <Ul style={style.subtree}>
+    //     <li>
+    //         <decorators.Loading style={style.loading}/>
+    //     </li>
+    // </Ul> */}
+    <decorators.Loading style={style.loading}/>
 );
 
 Loading.propTypes = {
