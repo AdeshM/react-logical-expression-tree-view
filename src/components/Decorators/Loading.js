@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-const Loading = styled(({className}) => (
-    <div className={className}>loading...</div>
+const Loading = styled(({style}) => (
+    <div className={style.nodeL}>loading...</div>
 ))(({style}) => style);
 
 Loading.propTypes = {

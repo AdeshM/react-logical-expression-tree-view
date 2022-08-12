@@ -80,7 +80,7 @@ class TreeNode extends PureComponent {
 
         if (node.loading) {
             return (
-                <Loading decorators={decorators} style={style}/>
+                <Loading decorators={decorators} style={this.props.classes}/>
             );
         }
 

@@ -9,7 +9,7 @@ const Loading = ({style, decorators}) => (
     //         <decorators.Loading style={style.loading}/>
     //     </li>
     // </Ul> */}
-    <decorators.Loading style={style.loading}/>
+    <decorators.Loading style={style}/>
 );
 
 Loading.propTypes = {
