@@ -108,7 +108,7 @@ class TreeNode extends PureComponent {
                 {/* <> */}
                 <div className={classes.operator} /* onClick={onSelectConnector} */
                     onClick={ (e) => {
-                        // console.log('Hello Bamiyooo!', e, children, path);
+                        console.log('Hello Bamiyooo!', e, children, path);
                         return (typeof onSelectConnector === 'function')
                             ? onSelectConnector(children, path)
                             : undefined;
@@ -162,7 +162,7 @@ class TreeNode extends PureComponent {
                     style={style}
                     customStyles={customStyles}
                     onClick={() => this.onClick()}
-                    onSelect={isFunction(onSelect) ? (() => onSelect(node)) : undefined}
+                    onSelect={isFunction(onSelect) ? (() => onSelect(node, path)) : undefined}
                     classes={classes}
                     actionHandler={ isFunction(actionHandler)
                         ? ((e) => actionHandler(e, node, treeIndex, path))

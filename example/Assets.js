@@ -35,7 +35,7 @@ const LeafLevel = ({ groupType, groupName, actionHandler, treeIndex, path /* , a
                         // ))
                     }
                     <IconButton aria-label="delete" size="small" onClick={
-                        (e) => actionHandler(e.currentTarget, treeIndex, path)
+                        e => actionHandler(e, treeIndex, path)
                     }>
                         <DeleteIcon fontSize="inherit" />
                     </IconButton>

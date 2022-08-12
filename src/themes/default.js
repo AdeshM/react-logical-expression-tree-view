@@ -67,10 +67,21 @@ export default {
             },
             subtree: {
                 listStyle: 'none',
-                paddingLeft: '19px'
+                paddingLeft: '19px',
+
+                border: '2px dashed #0787ACDE',
+                width: '100%',
+                margin: '0.5rem 1rem',
+                borderRadius: '0.25rem',
+                background: '#F2F6F8',
+                color: '#000',
+                '& li': {
+                    padding: '0.75rem 1rem',
+                }
             },
             loading: {
-                color: '#E2C089'
+                // color: '#E2C089',
+                color: '#F2F6F8',
             }
         }
     }
