@@ -53,7 +53,7 @@ const styles = (theme) => ({
         },
 
         '&:first-child::before': {
-            height: '50%',
+            // height: '50%',
             top: '50%',
             // content: '" "',
         },
