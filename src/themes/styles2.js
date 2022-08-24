@@ -30,7 +30,10 @@ const styles = (theme) => ({
             position: 'absolute',
             background: `${txColor}`,
             color: '#FFF',
-        }
+        },
+        '&:only-of-type': {
+            paddingLeft: '0rem',
+        },
     },
 
     nodeL: {
@@ -53,6 +56,11 @@ const styles = (theme) => ({
             height: '50%',
             top: '50%',
             // content: '" "',
+        },
+
+        '&:nth-child(2)::before': {
+            height: '50%',
+            top: '50%',
         },
         
         // '&>div:nth-child(1)::before': {

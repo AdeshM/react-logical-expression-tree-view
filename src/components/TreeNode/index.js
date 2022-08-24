@@ -106,16 +106,18 @@ class TreeNode extends PureComponent {
             // <>
             <Grid item xs={12} className={classes.nodeL} /* onClick={onSelect} */ >
                 {/* <> */}
-                <div className={classes.operator} /* onClick={onSelectConnector} */
-                    onClick={ (e) => {
-                        console.log('Hello Bamiyooo!', e, children, path);
-                        return (typeof onSelectConnector === 'function')
-                            ? onSelectConnector(children, path)
-                            : undefined;
-                    } }
-                >
-                    {node.operator}
-                </div>
+                { children.length > 1 &&
+                    <div className={classes.operator} /* onClick={onSelectConnector} */
+                        onClick={ (e) => {
+                            // console.log('Hello Bamiyooo!', e, children, path);
+                            return (typeof onSelectConnector === 'function')
+                                ? onSelectConnector(children, path)
+                                : undefined;
+                        } }
+                    >
+                        {node.operator}
+                    </div>
+                }
                 <Grid container spacing={3}
                     className={`${classes.nodeC} `}>
                     {/* ${this.createOperatorContentClass(node.operator)}`} > */}
