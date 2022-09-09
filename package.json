@@ -1,6 +1,6 @@
 {
   "name": "react-logical-expression-tree-view",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "React Expression Tree View Component",
   "main": "index.js",
   "scripts": {
