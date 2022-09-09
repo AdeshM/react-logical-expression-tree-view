@@ -1,6 +1,6 @@
 # react-logical-expression-tree-view
 
-[![Build Status](https://travis-ci.org/storybookjs/react-treebeard.svg?branch=master)](https://travis-ci.org/storybookjs/react-treebeard) [![Coverage Status](https://coveralls.io/repos/storybookjs/react-treebeard/badge.svg?branch=master&service=github)](https://coveralls.io/github/storybookjs/react-treebeard?branch=master)
+[![Build Status](https://travis-ci.org/storybookjs/react-logical-expression-tree-view.svg?branch=master)](https://travis-ci.org/storybookjs/react-logical-expression-tree-view) [![Coverage Status](https://coveralls.io/repos/storybookjs/react-logical-expression-tree-view/badge.svg?branch=master&service=github)](https://coveralls.io/github/storybookjs/react-logical-expression-tree-view?branch=master)
 
 React Tree View Component. Data-Driven, Fast, Efficient and Customisable.
 
@@ -10,15 +10,15 @@ React Tree View Component. Data-Driven, Fast, Efficient and Customisable.
 npm install react-logical-expression-tree-view --save
 ```
 
-### [Example](http://storybookjs.github.io/react-treebeard/)
+### [Example](http://storybookjs.github.io/react-logical-expression-tree-view/)
 
-An online example from the `/example` directory can be found here: [Here](http://storybookjs.github.io/react-treebeard/)
+An online example from the `/example` directory can be found here: [Here](http://storybookjs.github.io/react-logical-expression-tree-view/)
 
 ### Quick Start
 ```javascript
 import React, {PureComponent} from 'react';
 import ReactDOM from 'react-dom';
-import {Treebeard} from 'react-treebeard';
+import ExpressionTreeView from 'react-logical-expression-tree-view';
 
 const data = {
     name: 'root',
@@ -73,7 +73,7 @@ class TreeExample extends PureComponent {
     render(){
         const {data} = this.state;
         return (
-            <Treebeard
+            <ExpressionTreeView
                 data={data}
                 onToggle={this.onToggle}
             />
@@ -105,7 +105,7 @@ const TreeExample = () => {
     }
     
     return (
-       <Treebeard data={data} onToggle={onToggle}/>
+       <ExpressionTreeView data={data} onToggle={onToggle}/>
     )
 }
 
@@ -176,7 +176,7 @@ const decorators = {
     }
 };
 
-<Treebeard data={...} decorators={decorators}/>
+<ExpressionTreeView data={...} decorators={decorators}/>
 ```
 
 ### Data Attributes
