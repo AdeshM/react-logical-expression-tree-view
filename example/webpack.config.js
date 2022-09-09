@@ -27,6 +27,12 @@ module.exports = {
             use: ['babel-loader', 'eslint-loader']
         }]
     },
+    devServer: {
+        client: {
+            // progress: false,
+            overlay: false,
+        },
+    },    
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin()
