@@ -5,22 +5,16 @@ import {castArray} from 'lodash';
 import defaultTheme from '../themes/default';
 import defaultAnimations from '../themes/animations';
 import {randomString} from '../util';
-import {Ul} from './common';
 import defaultDecorators from './Decorators';
 import TreeNode from './TreeNode';
 
-import { Container, Grid, Paper, Box, IconButton } from '@material-ui/core';
-
-import { makeStyles, withStyles } from '@material-ui/core/styles';
-import styles from '../themes/styles2';
+import { Grid } from '@material-ui/core';
 
 
 const TreeBeard = ({
     animations, decorators, data, onToggle, style, onSelect, customStyles, actionHandler,
     onSelectConnector, /* onChange */
 }) => {
-    const useStyles = makeStyles((theme) => styles(theme));
-    const classes = useStyles();
     const path = [];
     return (
         // <Ul style={{...defaultTheme.tree.base, ...style.tree.base}}>

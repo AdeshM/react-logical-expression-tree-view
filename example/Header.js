@@ -1,19 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Div} from '../src/components/common';
 
 import { LeafLevel } from './Assets';
 
-import { Container, Grid, Paper, Box, IconButton } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../src/themes/styles2';
-import { propTypes } from 'velocity-react/velocity-component';
 
 
 // Example: Customising The Header Decorator To Include Icons
-const Header = ({onSelect, style, customStyles, node, actionHandler, treeIndex, path, onSelectConnector}) => {
+const Header = ({onSelect, node, actionHandler, treeIndex, path, onSelectConnector}) => {
     // const iconType = node.children ? 'folder' : 'file-text';
     // const iconClass = `fa fa-${iconType}`;
     // const iconStyle = {marginRight: '5px'};

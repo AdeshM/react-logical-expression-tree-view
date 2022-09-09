@@ -1,16 +1,14 @@
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
 import {isArray, isFunction} from 'lodash';
 
 import defaultAnimations from '../../themes/animations';
 import {randomString} from '../../util';
-import {Ul, Li} from '../common';
 import NodeHeader from '../NodeHeader';
 import Drawer from './Drawer';
 import Loading from './Loading';
 
-import { Container, Grid, Paper, Box, IconButton } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import styles from '../../themes/styles2';
@@ -71,7 +69,6 @@ class TreeNode extends PureComponent {
         const {
             animations, decorators: propDecorators,
             node, style, onToggle, onSelect, customStyles, actionHandler,
-            treeIndex: childIndex, //path: path,
             onSelectConnector,
         } = this.props;
 
@@ -108,7 +105,7 @@ class TreeNode extends PureComponent {
                 {/* <> */}
                 { children.length > 1 &&
                     <div className={classes.operator} /* onClick={onSelectConnector} */
-                        onClick={ (e) => {
+                        onClick={ () => {
                             // console.log('Hello Bamiyooo!', e, children, path);
                             return (typeof onSelectConnector === 'function')
                                 ? onSelectConnector(children, path)

@@ -26,7 +26,7 @@ class NodeHeader extends Component {
     render() {
         const {
             animations, decorators, node, onClick, style, onSelect, customStyles,
-            actionHandler, treeIndex, onSelectConnector, path,
+            actionHandler, treeIndex, onSelectConnector,
         } = this.props;
         const {active, children} = node;
         const terminal = !children;

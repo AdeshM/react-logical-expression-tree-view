@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Chip, Typography } from '@material-ui/core';
-import { Container, Grid, Paper, Box, IconButton } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
+import { Paper, Box, IconButton } from '@material-ui/core';
 
 import { makeStyles } from '@material-ui/core/styles';
 import styles from '../src/themes/styles2';

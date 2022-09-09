@@ -1,12 +1,7 @@
-const removeNode = (treeData, node, path, index) => {
+const removeNode = (_treeData, _node, _path, _index) => {
     const newNode = {};
     return newNode;
 };
-
-
-
-
-
 
 
 /**

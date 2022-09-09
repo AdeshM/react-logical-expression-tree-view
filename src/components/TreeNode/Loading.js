@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import {Ul} from '../common';
 
 const Loading = ({style, decorators}) => (
     // {/* <Ul style={style.subtree}>

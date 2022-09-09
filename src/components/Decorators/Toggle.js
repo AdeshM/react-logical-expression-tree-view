@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 // import styled from '@emotion/styled';
 
-import {Div} from '../common';
 import { withStyles } from '@material-ui/core/styles';
 
 // const Polygon = styled('polygon', {
@@ -25,7 +24,7 @@ const styles = () => ({
     }
 });
 
-const Toggle = ({style, onClick, node, classes}) => {
+const Toggle = ({onClick, node, classes}) => {
     // const {height, width} = style;
     // const midHeight = height * 0.5;
     // const points = `0,0 0,${height} ${width},${midHeight}`;

@@ -1,6 +1,6 @@
 import React, {Fragment, PureComponent} from 'react';
 import ReactDOM from 'react-dom';
-import _, {forEach, includes, map} from 'lodash';
+import _, {includes} from 'lodash';
 
 import {Treebeard, decorators} from '../src';
 import {Div} from '../src/components/common';
@@ -10,9 +10,8 @@ import * as filters from './filter';
 import Header from './Header';
 import NodeViewer from './NodeViewer';
 
-import { getDepth, removeNode, randomString } from '../src/util/index';
+import { randomString } from '../src/util/index';
 
-import { walk, map as maptree } from '../src/util/tree-data-utils';
 
 import { JSONPath } from 'jsonpath-plus';
 
@@ -132,7 +131,7 @@ class DemoTree extends PureComponent {
             prevState.data.children.splice(0, 0, {name: 'My New Item - ' + randomString(), id: randomString()});
             prevState.data.children;
         }); */
-        this.setState(function(previousState, currentProps) {
+        this.setState(function(previousState) {
             previousState.data.children.splice(0, 0, {name: 'My New Item - ' + randomString(), id: randomString()});
             return {
                 ...previousState,
@@ -189,7 +188,7 @@ class DemoTree extends PureComponent {
 
         // this.collector = {};
         let collector2 = [];
-        const cbTransform = (args) => {
+        const cbTransform = () => {
             /* if(typeof args == 'object') {
                 collector = {...collector, ...args};
             }
@@ -222,11 +221,7 @@ class DemoTree extends PureComponent {
         // this.createRulesStructure(obj);
 
 
-        const myCollector = {};
 
-        const cb = (el, ix, arr, operator) => {
-            console.log('FOR EACH => ', el, ix, arr, operator, arguments);
-        };
         // obj.forEach(cb);
 
         // for (const [key, value] of Object.entries(obj)) {
@@ -245,7 +240,7 @@ class DemoTree extends PureComponent {
         const mapCallback = (obj) => {
             const { operator, children = [] } = obj;
             const res2 = {};
-            res2[operator] = children.map((el, ix, thisArray) => {
+            res2[operator] = children.map((el, ix) => {
                 console.log('FOR MAP L2 => ', el, ix);
                 if(!el.children)
                     return el;
@@ -259,7 +254,6 @@ class DemoTree extends PureComponent {
         
         
         if(typeof obj === 'object') {
-            const { operator, children = [] } = obj;
             // children.forEach((el, ix, thisArr) => cb(el, ix, thisArr, operator));
 
             // const iResult = children.map((el, ix, thisArray) => {
@@ -304,7 +298,7 @@ class DemoTree extends PureComponent {
         let collectorObject = {};
         
         if(typeof args === 'object' && operator) {
-            let operator = args.operator;
+            operator = args.operator;
             // tmpObj[operator] = [...args.children];
             console.log(tmpObj);
             /* if(args.children) {
@@ -380,7 +374,7 @@ class DemoTree extends PureComponent {
                 ...this.travChildrens(collectorObject, children, index),
             ];
 
-            const collectorObject = {...collectorObject, ...tmpObj};
+            collectorObject = {...collectorObject, ...tmpObj};
 
             console.log('tmpObj => ', tmpObj, collectorObject);
 
@@ -405,7 +399,7 @@ class DemoTree extends PureComponent {
         const { operator, children = [], ...objRest } = treeData;
         const result = {...objRest, operator};
         path = path || [0];
-        result['children'] = children.map((el, i, thisArray) => {
+        result['children'] = children.map((el, i) => {
             currentIndex = i || 0;
             console.log('LOOP MAP: => ', el, i, ' tree-path => ', path);
             if(!el.children){
@@ -495,7 +489,6 @@ class DemoTree extends PureComponent {
 
         const { children } = treeData;
         let newPath;
-        let newPathObject;
         let val = {};
         // currentPath.shift();
 
@@ -525,15 +518,6 @@ class DemoTree extends PureComponent {
 
     render() {
         const {data, cursor} = this.state;
-
-        const treeData = [data];
-        const getNodeKey = ({ treeIndex }) => treeIndex;
-        let collector = {};
-        const callback = (k) => {
-            console.log('Iam Callback => ', k);
-            const { name, id } = k.node;
-            // collector = k.
-        };
         
         // this.traverseTree(data); // COMMENTED FOR GOOD 
 
