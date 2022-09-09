@@ -18,7 +18,7 @@ An online example from the `/example` directory can be found here: [Here](http:/
 ```javascript
 import React, {PureComponent} from 'react';
 import ReactDOM from 'react-dom';
-import {Treebeard} from 'react-logical-expression-tree-view';
+import ExpressionTreeView from 'react-logical-expression-tree-view';
 
 const data = {
     name: 'root',
@@ -73,7 +73,7 @@ class TreeExample extends PureComponent {
     render(){
         const {data} = this.state;
         return (
-            <Treebeard
+            <ExpressionTreeView
                 data={data}
                 onToggle={this.onToggle}
             />
@@ -105,7 +105,7 @@ const TreeExample = () => {
     }
     
     return (
-       <Treebeard data={data} onToggle={onToggle}/>
+       <ExpressionTreeView data={data} onToggle={onToggle}/>
     )
 }
 
@@ -176,7 +176,7 @@ const decorators = {
     }
 };
 
-<Treebeard data={...} decorators={decorators}/>
+<ExpressionTreeView data={...} decorators={decorators}/>
 ```
 
 ### Data Attributes
