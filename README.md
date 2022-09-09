@@ -7,7 +7,7 @@ React Tree View Component. Data-Driven, Fast, Efficient and Customisable.
 ### Install
 
 ```
-npm install react-treebeard --save
+npm install react-logical-expression-tree-view --save
 ```
 
 ### [Example](http://storybookjs.github.io/react-treebeard/)
