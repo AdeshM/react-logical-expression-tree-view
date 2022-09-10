@@ -1,7 +1,7 @@
 {
   "name": "react-logical-expression-tree-view",
-  "version": "2.0.1",
-  "description": "React Expression Tree View Component",
+  "version": "2.0.2",
+  "description": "React Logical Expression Tree View Component",
   "main": "index.js",
   "scripts": {
     "prepublish": "npm run build",
@@ -12,7 +12,8 @@
     "lint": "eslint .",
     "example_old": "webpack-dev-server --content-base ./example/ --config ./example/webpack.config.js",
     "example": "webpack-dev-server --static ./example/ --config ./example/webpack.config.js --mode development",
-    "build-example": "webpack --content-base ./example/ --config ./example/webpack.config.js --output ./dist/example.js"
+    "build-example_old": "webpack --content-base ./example/ --config ./example/webpack.config.js --output ./dist/example.js",
+    "build-example": "webpack --static ./example/ --config ./example/webpack.config.js --output ./dist/example.js"
   },
   "peerDependencies": {
     "@babel/runtime": ">=7.0.0",
@@ -23,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AdeshM/react-treebeard.git"
+    "url": "git+https://github.com/AdeshM/react-logical-expression-tree-view.git"
   },
   "keywords": [
     "react",
@@ -35,9 +36,9 @@
   "author": "Alex Curtis",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/storybookjs/react-treebeard/issues"
+    "url": "https://github.com/storybookjs/react-logical-expression-tree-view/issues"
   },
-  "homepage": "https://github.com/AdeshM/react-treebeard#readme",
+  "homepage": "https://github.com/AdeshM/react-logical-expression-tree-view#readme",
   "devDependencies": {
     "@babel/cli": "^7.6.0",
     "@babel/core": "^7.6.0",
