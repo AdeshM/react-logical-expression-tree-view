@@ -2,7 +2,7 @@ import React, {Fragment, PureComponent} from 'react';
 import ReactDOM from 'react-dom';
 import _, {includes} from 'lodash';
 
-import {Treebeard, decorators} from '../src';
+import {ExpressionTreeView, decorators} from '../src';
 import {Div} from '../src/components/common';
 import data from './data';
 import styles from './styles';
@@ -544,7 +544,7 @@ class DemoTree extends PureComponent {
                 </Div>
                 
                 <Div style={styles.component}>
-                    <Treebeard
+                    <ExpressionTreeView
                         data={data}
                         onToggle={this.onToggle}
                         onSelect={this.onSelect}
@@ -563,6 +563,7 @@ class DemoTree extends PureComponent {
                         }}
                     />
 
+                    <br />
                     <hr />
                     
                     <Div>

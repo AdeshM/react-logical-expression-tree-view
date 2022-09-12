@@ -11,7 +11,7 @@ import TreeNode from './TreeNode';
 import { Grid } from '@material-ui/core';
 
 
-const TreeBeard = ({
+const ExpressionTreeView = ({
     animations, decorators, data, onToggle, style, onSelect, customStyles, actionHandler,
     onSelectConnector, /* onChange */
 }) => {
@@ -41,7 +41,7 @@ const TreeBeard = ({
     );
 };
 
-TreeBeard.propTypes = {
+ExpressionTreeView.propTypes = {
     style: PropTypes.object,
     customStyles: PropTypes.object,
     data: PropTypes.oneOfType([
@@ -60,11 +60,11 @@ TreeBeard.propTypes = {
     // onChange: PropTypes.func,
 };
 
-TreeBeard.defaultProps = {
+ExpressionTreeView.defaultProps = {
     style: defaultTheme,
     animations: defaultAnimations,
     decorators: defaultDecorators,
     customStyles: {}
 };
 
-export default TreeBeard;
+export default ExpressionTreeView;
