@@ -8,7 +8,7 @@ import data from './data';
 import * as filters from './filter';
 import NodeViewer from './NodeViewer';
 import styles from './styles';
-import Header from './ZBHeader';
+import Header from './Header';
 
 import { randomString } from '../src/util/index';
 
