@@ -1,14 +1,14 @@
-import React, {Fragment, PureComponent} from 'react';
+import _, { includes } from 'lodash';
+import React, { Fragment, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
-import _, {includes} from 'lodash';
 
-import {ExpressionTreeView, decorators} from '../src';
-import {Div} from '../src/components/common';
+import { decorators, ExpressionTreeView } from '../src';
+import { Div } from '../src/components/common';
 import data from './data';
-import styles from './styles';
 import * as filters from './filter';
-import Header from './Header';
 import NodeViewer from './NodeViewer';
+import styles from './styles';
+import Header from './Header';
 
 import { randomString } from '../src/util/index';
 
@@ -30,7 +30,7 @@ class DemoTree extends PureComponent {
         this.collector = [];
     }
 
-    onToggle(node, toggled) {
+    onToggle(node, _toggled) {
         const {cursor, data} = this.state;
 
         // this.setState(() => {});
@@ -160,30 +160,6 @@ class DemoTree extends PureComponent {
         path.push(index);
         index++;
         
-        // console.log(this.currentIndex);
-        // if(children) {
-        //     console.log(children);
-        //     children.forEach((child, i) => {
-        //         this.trav(child);
-        //         // console.log(child);
-        //         console.log('children => ', i);
-        //         // index++;
-        //     });
-        // } else {
-        //     console.log(restObj/* , this.currentIndex */);
-        //     this.currentIndex++;
-        //     // return restObj;
-        // }
-        
-
-
-        /* 
-        children.map((el, i) => {
-            console.log(el, i, path);
-            this.trav(el, path, index);
-        });
-        
-        */
         console.log('ORIGINAL JSON OBJECT => ', obj);
 
         // this.collector = {};
@@ -214,29 +190,6 @@ class DemoTree extends PureComponent {
         console.log('RESULT => ', result);  
         console.log('FINAL JSON OBJECT => ', this.collector, collector2);
 
-        
-        // console.log(restObj, children, this.currentIndex);
-
-
-        // this.createRulesStructure(obj);
-
-
-
-        // obj.forEach(cb);
-
-        // for (const [key, value] of Object.entries(obj)) {
-        //     console.log('Entries => ', key, value);
-        //     // myCollector
-        // }
-
-        // const { operator, children = [] } = obj;
-        // const mapCallback = children.map((el, ix, thisArray) => {
-        //     console.log('FOR MAP L2 => ', el, ix);
-        //     return (
-        //         el
-        //     );
-        // });
-
         const mapCallback = (obj) => {
             const { operator, children = [] } = obj;
             const res2 = {};
@@ -256,26 +209,6 @@ class DemoTree extends PureComponent {
         if(typeof obj === 'object') {
             // children.forEach((el, ix, thisArr) => cb(el, ix, thisArr, operator));
 
-            // const iResult = children.map((el, ix, thisArray) => {
-            //     const { operator, children = [] } = el;
-            //     if(!el.children) {
-            //         console.log('FOR MAP => ', el, ix);
-            //         return (
-            //             el
-            //         );
-            //     } else {
-            //         // const res2 = {};
-            //         // res2[operator] = children.map((el, ix, thisArray) => {
-            //         //     console.log('FOR MAP L2 => ', el, ix);
-            //         //     return (
-            //         //         el
-            //         //     );
-            //         // });
-            //         // console.log('res2 => ', res2);
-            //         // return {'OR': res2};
-            //         return mapCallback(el);
-            //     }
-            // });
 
             const iResult = mapCallback(obj);
 
@@ -312,15 +245,6 @@ class DemoTree extends PureComponent {
 
             const rs = this.travParent(collectorObject, args, index);
             console.log('RESULT SET \'rs\' => ', rs);
-
-            // Commented Just Now
-            /* 
-            tmpObj[operator] = [
-                ...this.travChildrens(collectorObject, args)
-            ];
-
-            console.log('tmpObj => ', tmpObj);
-            */
 
         }
 
@@ -389,13 +313,13 @@ class DemoTree extends PureComponent {
     /**
      * NEW Logic to traverse Tree - with PATH
      * @param {object} treeData 
-     * @param {object} keyMap 
+     * @param {object} _keyMap 
      * @param {object} path 
      * @returns transformed object of Array
      */
     // Traverse
     // Handle outer object... i.e. other than children
-    traverseTreeX(treeData, keyMap, path, currentIndex) {
+    traverseTreeX(treeData, _keyMap, path, currentIndex) {
         const { operator, children = [], ...objRest } = treeData;
         const result = {...objRest, operator};
         path = path || [0];
