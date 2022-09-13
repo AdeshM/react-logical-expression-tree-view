@@ -3,6 +3,7 @@ import React, { Fragment, PureComponent } from 'react';
 import ReactDOM from 'react-dom';
 
 import { decorators, ExpressionTreeView } from '../src';
+// import { decorators, ExpressionTreeView } from 'react-logical-expression-tree-view';
 import { Div } from '../src/components/common';
 import data from './data';
 import * as filters from './filter';

@@ -78,6 +78,7 @@
     "jsonpath-plus": "^7.0.0",
     "object-rewrite": "^10.0.9",
     "object-scan": "^18.3.11",
+    "react-logical-expression-tree-view": "^2.0.6",
     "shallowequal": "^1.1.0",
     "velocity-react": "^1.4.3"
   }
