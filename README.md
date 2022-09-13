@@ -1,6 +1,6 @@
 # react-logical-expression-tree-view
 
-[![Build Status](https://travis-ci.org/storybookjs/react-logical-expression-tree-view.svg?branch=master)](https://travis-ci.org/storybookjs/react-logical-expression-tree-view) [![Coverage Status](https://coveralls.io/repos/storybookjs/react-logical-expression-tree-view/badge.svg?branch=master&service=github)](https://coveralls.io/github/storybookjs/react-logical-expression-tree-view?branch=master)
+[![Build Status](https://travis-ci.org/storybookjs/react-logical-expression-tree-view.svg?branch=master)](https://travis-ci.org/storybookjs/react-logical-expression-tree-view) [![Coverage Status](https://coveralls.io/repos/github/AdeshM/react-logical-expression-tree-view/badge.svg?branch=master)](https://coveralls.io/github/AdeshM/react-logical-expression-tree-view?branch=master)
 
 React Tree View Component. Data-Driven, Fast, Efficient and Customisable.
 
