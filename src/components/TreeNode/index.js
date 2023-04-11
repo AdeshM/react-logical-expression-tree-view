@@ -164,7 +164,7 @@ class TreeNode extends PureComponent {
                     onSelect={isFunction(onSelect) ? (() => onSelect(node, path)) : undefined}
                     classes={classes}
                     actionHandler={ isFunction(actionHandler)
-                        ? ((e) => actionHandler(e, node, treeIndex, path))
+                        ? ((e, newNode) => actionHandler(e, newNode || node, treeIndex, path))
                         : undefined }
                     treeIndex={treeIndex}
                     path={path}
